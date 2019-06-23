@@ -7,7 +7,7 @@ interface DataSource
 
 interface RemoteSource : DataSource
 
-interface CacheSource : DataSource {
+interface LocalSource : DataSource {
 
     fun isCached(): Single<Boolean>
 
