@@ -1,7 +1,6 @@
 package cl.getapps.dogbreed.feature.breeddetail.data.source.remote
 
 import cl.getapps.dogbreed.feature.breeddetail.data.entity.BreedDetailEntity
-import cl.getapps.dogbreed.feature.breeds.data.entity.BreedsEntity
 import com.google.gson.Gson
 import io.reactivex.Single
 import okhttp3.OkHttpClient
