@@ -25,11 +25,8 @@ class BreedsDataRepository(
             }
     }
 
-    override fun save(items: BreedsEntity): Completable {
-        return localDataSource.save(items)
-    }
+    override fun save(items: BreedsEntity): Completable = localDataSource.save(items)
 
-    override fun clear(): Completable {
-        return localDataSource.clear()
-    }
+
+    override fun clear(): Completable = localDataSource.clear()
 }
