@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".feature.breeddetail.ui.BreedDetailActivity"/>
+        <activity android:name=".feature.breeds.ui.BreedsActivity"/>
     </application>
 
 </manifest>

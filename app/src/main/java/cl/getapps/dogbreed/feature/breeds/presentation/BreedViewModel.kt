@@ -12,14 +12,14 @@ import io.reactivex.disposables.Disposable
 
 class BreedViewModel(private val getBreeds: GetBreeds) : ViewModel() {
 
-    private var breeds: MutableLiveData<StateData> = MutableLiveData()
+    var breeds: MutableLiveData<StateData> = MutableLiveData()
     private var disposable: Disposable? = null
 
     fun fetchBreeds() {
         disposable = getBreeds.execute(None())
             .doOnSubscribe { breeds.value = Loading }
             .subscribe(
-                { breeds.value = Success(it) },
+                { breeds.value = Success(it.breedDetail) },
                 { breeds.value = Error(it) }
             )
     }
