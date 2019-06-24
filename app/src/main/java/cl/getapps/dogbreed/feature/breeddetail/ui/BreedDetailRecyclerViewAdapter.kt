@@ -23,10 +23,11 @@ class BreedDetailRecyclerViewAdapter : BaseRecyclerViewAdapter<String>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = values[position]
         holder as ViewHolder
-        Picasso.get().load(item).fit().centerCrop().into(holder.breedName)
+        Picasso.get().load(item).placeholder(R.drawable.image_placeholder_350x350).fit().centerCrop()
+            .into(holder.breedImage)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val breedName: ImageView = view.breed_image
+        val breedImage: ImageView = view.breed_image
     }
 }

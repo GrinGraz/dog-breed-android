@@ -22,9 +22,9 @@ interface BreedDetailAPI {
 
 object Creator {
 
-    const val BASE_URL = "https://dog.ceo/api/"
+    private const val BASE_URL = "https://dog.ceo/api/"
 
-    private fun createService(): BreedDetailAPI {
+    fun createService(): BreedDetailAPI {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build())

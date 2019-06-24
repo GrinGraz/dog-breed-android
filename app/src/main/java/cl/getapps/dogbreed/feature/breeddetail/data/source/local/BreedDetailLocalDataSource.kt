@@ -10,7 +10,7 @@ class BreedDetailLocalDataSource: LocalDataSource {
     }
 
     override fun isCached(): Single<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Single.just(false)
     }
 
     override fun setLastCacheTime(lastCache: Long) {
@@ -22,7 +22,7 @@ class BreedDetailLocalDataSource: LocalDataSource {
     }
 
     override fun <T> save(items: T): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Completable.complete()
     }
 
     override fun clear(): Completable {

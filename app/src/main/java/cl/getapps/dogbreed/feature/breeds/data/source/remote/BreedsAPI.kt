@@ -1,6 +1,5 @@
 package cl.getapps.dogbreed.feature.breeds.data.source.remote
 
-import cl.getapps.dogbreed.feature.breeddetail.data.source.remote.BreedDetailAPI
 import cl.getapps.dogbreed.feature.breeds.data.entity.BreedsEntity
 import com.google.gson.Gson
 import io.reactivex.Single
@@ -23,13 +22,13 @@ object Creator {
 
     const val BASE_URL = "https://dog.ceo/api/"
 
-    private fun createService(): BreedDetailAPI {
+    fun createService(): BreedsAPI {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).build())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(Gson()))
             .build()
-        return retrofit.create(BreedDetailAPI::class.java)
+        return retrofit.create(BreedsAPI::class.java)
     }
 }

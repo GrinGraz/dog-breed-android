@@ -2,6 +2,7 @@ package cl.getapps.dogbreed.core.ui
 
 import android.os.Bundle
 import androidx.annotation.CallSuper
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cl.getapps.dogbreed.R
@@ -9,8 +10,10 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.item_list.*
 
-abstract class RecyclerViewActivity<Adapter : BaseRecyclerViewAdapter<Model>, Model> : BaseActivity() {
-    lateinit var layoutManager: LinearLayoutManager
+abstract class RecyclerViewActivity<Adapter : BaseRecyclerViewAdapter<Model>, Model>(private val asGrid: Boolean) :
+    BaseActivity() {
+
+    open lateinit var layoutManager: RecyclerView.LayoutManager
     open lateinit var recyclerViewAdapter: Adapter
 
     var loadingFromServer: Boolean = false
@@ -36,18 +39,21 @@ abstract class RecyclerViewActivity<Adapter : BaseRecyclerViewAdapter<Model>, Mo
     }
 
     private fun setupRecyclerView() {
-        layoutManager = LinearLayoutManager(this)
+        if (asGrid) layoutManager = GridLayoutManager(this, 2)
+        else layoutManager = LinearLayoutManager(this)
         item_list.layoutManager = layoutManager
 
         val itemDividerDecoration = resources.getDimension(R.dimen.item_separator_height).toInt()
-        //item_list.addItemDecoration(ItemDivider(itemDividerDecoration))
+        if (asGrid) item_list.addItemDecoration(GridItemDecoration(itemDividerDecoration))
+        else item_list.addItemDecoration(ListItemDecoration(itemDividerDecoration))
         item_list.adapter = recyclerViewAdapter
     }
 
     private fun addPagination() {
 
         fun isLastItemVisible() =
-            layoutManager.findLastCompletelyVisibleItemPosition() == recyclerViewAdapter.itemCount - 1
+            if (asGrid) (layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition() == recyclerViewAdapter.itemCount - 1
+            else (layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition() == recyclerViewAdapter.itemCount - 1
 
         item_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
