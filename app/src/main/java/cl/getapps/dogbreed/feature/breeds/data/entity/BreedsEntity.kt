@@ -1,5 +1,6 @@
 package cl.getapps.dogbreed.feature.breeds.data.entity
 
+import cl.getapps.dogbreed.feature.breeds.domain.model.Breeds
 import com.google.gson.annotations.SerializedName
 
 data class BreedsEntity(
@@ -7,4 +8,4 @@ data class BreedsEntity(
     @SerializedName("status") val status : String?
 )
 
-fun BreedsEntity.toModel(): Nothing = TODO()
+fun BreedsEntity.toModel() = Breeds(breeds = message, status = status)

@@ -3,6 +3,7 @@ package cl.getapps.dogbreed.feature.breeddetail.data.repository
 import cl.getapps.dogbreed.feature.breeddetail.data.entity.BreedDetailEntity
 import cl.getapps.dogbreed.feature.breeddetail.data.entity.toModel
 import cl.getapps.dogbreed.feature.breeddetail.data.source.local.LocalDataSource
+import cl.getapps.dogbreed.feature.breeddetail.data.source.remote.BreedDetailRemoteDataSource
 import cl.getapps.dogbreed.feature.breeddetail.data.source.remote.RemoteDataSource
 import cl.getapps.dogbreed.feature.breeddetail.domain.model.BreedDetail
 import cl.getapps.dogbreed.feature.breeddetail.domain.repository.BreedDetailRepository

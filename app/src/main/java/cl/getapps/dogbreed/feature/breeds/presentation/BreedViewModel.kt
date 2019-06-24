@@ -19,7 +19,7 @@ class BreedViewModel(private val getBreeds: GetBreeds) : ViewModel() {
         disposable = getBreeds.execute(None())
             .doOnSubscribe { breeds.value = Loading }
             .subscribe(
-                { breeds.value = Success(it.breedDetail) },
+                { breeds.value = Success(it.breeds) },
                 { breeds.value = Error(it) }
             )
     }

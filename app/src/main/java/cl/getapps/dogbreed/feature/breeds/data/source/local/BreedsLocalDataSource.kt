@@ -7,11 +7,11 @@ import io.reactivex.Single
 
 class BreedsLocalDataSource: LocalDataSource {
     override fun getBreeds(): Single<BreedsEntity> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("ASDF") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun isCached(): Single<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Single.just(false)
     }
 
     override fun setLastCacheTime(lastCache: Long) {
@@ -23,7 +23,7 @@ class BreedsLocalDataSource: LocalDataSource {
     }
 
     override fun <T> save(items: T): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Completable.complete()
     }
 
     override fun clear(): Completable {

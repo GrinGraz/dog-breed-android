@@ -37,6 +37,11 @@ class BreedsRecyclerViewAdapter : BaseRecyclerViewAdapter<String>() {
         val item = values[position]
         holder as ViewHolder
         holder.breedName.text = item
+
+        with(holder.itemView) {
+            tag = item
+            setOnClickListener(onClickListener)
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
